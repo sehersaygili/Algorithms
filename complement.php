@@ -1,8 +1,19 @@
 <?php
+/*
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
 
-//Input: nums = [2,7,11,15], target = 9
-//Output: [0,1]
-//Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+* @param $nums, $target
+* boş dizi oluşturma(dizi konumlarını ve indislerini saklamak için)
+* dizi üzerinde döngü ( mevcut elemanın değeri $num, dizideki konumu $index )
+* complement hesaplama (hedef-sayı)
+* complement kontrolü
+* sayıyı kaydetme
+* sonuç
+
+*/
 class Solution {
     function twoSum($nums, $target) {
         $numIndices = array(); // indisleri array içinde tutuyoruz.
@@ -16,5 +27,7 @@ class Solution {
         return array();
     }
 }
+
+
 
 ?>
