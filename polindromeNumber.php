@@ -4,24 +4,27 @@
  * @return Boolean eğer x polindrome ise true döner
 */
 
-function isPolindrome($x) {
-    $strNumber = strval($x); //x stringe çevrilecek
-    $reversedNumber = strrev($strNumber); 
+    function isPolindrome($x) {
+        $strNumber = strval($x); //x stringe çevrilecek
+        $reversedNumber = strrev($strNumber); 
 
-    return $strNumber === $reversedNumber;
-}
+        return $strNumber === $reversedNumber;
+    }
+    function isPalindrome($number) {
+        if ($number < 0 || ($number % 10 == 0 && $number != 0)) {
+            return false;
+        }
+    
+        $originalNumber = $number;  // Orijinal sayıyı sakla
+        $reversedNumber = 0;
+    
+        while ($number > 0) {
+            $reversedNumber = $reversedNumber * 10 + $number % 10;
+            $number = intval($number / 10);
+        }
+    
+        return $originalNumber === $reversedNumber;
+    }
 
-function polindrome($number) {
-    //0 hariç 10 un katları ve negatif sayıları polindrome olamaz..
-    if($number < 0 || ($number %10 == 0 && $number != 0)) {
-        return false;
-    }
-    $reversedNumber = 0;
-    while($number > $reversedNumber) {
-        //bir sayının birler basamağını bulmak için number % 10 alınır.
-        $reversedNumber = $reversedNumber * 10 + $number % 10; 
-        $number = intval($number / 10);
-    }
-    return $number == $reversedNumber || $number == intval($reversedNumber / 10);
-}
+
 ?>
