@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PalindromeController;
+use App\Http\Controllers\RomanNumeralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('convert');
+});
+
+
+Route::controller(RomanNumeralController::class)->group(function () {
+    Route::get('/convert/{number}', [RomanNumeralController::class, 'convertToInteger']);
+
 });
