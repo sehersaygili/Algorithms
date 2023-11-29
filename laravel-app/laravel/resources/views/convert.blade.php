@@ -44,6 +44,16 @@
                 })
                 .catch(error => console.error('Hata', error));
         }
+
+        function checkPalindrome() {
+            const palin = document.getElementById('palindromeInput').value;
+            fetch(`/is-palindrome/${palin}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('palindromeOutput').innerText = data;
+                })
+                .catch(error => console.error('Hata', error));
+        }
     </script>
 </body>
 </html>

@@ -19,8 +19,5 @@ Route::get('/', function () {
     return view('convert');
 });
 
-
-Route::controller(RomanNumeralController::class)->group(function () {
-    Route::get('/convert/{number}', [RomanNumeralController::class, 'convertToInteger']);
-
-});
+Route::get('/convert/{number}', [RomanNumeralController::class, 'convertToInteger']);
+Route::get('/is-palindrome/{number}', [PalindromeController::class,'checkPalindrome']);
