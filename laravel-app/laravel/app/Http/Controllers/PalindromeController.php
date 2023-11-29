@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class PalindromeController extends Controller
+class PalindromeController extends ApiController
 {
     public function checkPalindrome($number) {
         // 121 - 121
@@ -17,6 +17,9 @@ class PalindromeController extends Controller
         }
         $isPalindrome = $originalNumber == $reversedNumber;
 
-        return response()->json($isPalindrome);
+        if($isPalindrome === true) {
+            return $this->SuccessApiResponse('Bu Bir Palindrome Sayisi!');
+        }
+
     }
 }
