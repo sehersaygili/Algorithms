@@ -8,7 +8,6 @@ class RomanNumeralController extends Controller
 {
     public function convertToInteger($number) {
 
-
         $romanValues = [
             'I' => 1,
             'V' => 5,
