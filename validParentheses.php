@@ -2,27 +2,21 @@
     class Solution {
         //x girilen karakter
         public function isValid($x) {
+            // dönen çift değilse false döndürülmesi gerek
+            if(strlen($x) % 2 !== 0){
+                return false;
+            } 
+
+            //yığın oluştur
             $stack = [];
-            $array = [
-                ')' => '(',
-                '}' => '{',
-                ']' => '['
-            ];
 
-            for($i = 0; $i < strlen($x); $i++) {
-                $char = $x[$i]; // stringin o an ki karakteri
+            //karakterleri ayırmak gerek
+            $x_arr = str_split($x);
+            
+        }
 
-                if(array_key_exists($char, $array)) {
-                    $topElement = empty($stack) ?'#' : array_pop($stack);
-                    if($array[$char] != $topElement) {
-                        return false;
-                    } else {
-                        array_push($stack, $char);
-                    }
-                }
-                return empty($stack);
-            }
-         }
     }
-
+    $solution = new Solution();
+    echo $solution->isValid("{}") ? "true" : "false";
+    
 ?>
