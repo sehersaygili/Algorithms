@@ -21,13 +21,13 @@ class PhotoLinkedList {
     }
 
     public function addPhoto($photo) {
-        $newNode = new PhotoNode($photo);
-        if ($this->head === null) {
-            $this->head = $newNode;
-            $this->current = $newNode;
+        $newNode = new PhotoNode($photo); // Yeni bir düğüm oluşturuluyor. Bu düğüm, gönderilen fotoğrafı içeriyor.
+        if ($this->head === null) { // Eğer linked list boşsa (yani head düğümü yoksa)
+            $this->head = $newNode; // Oluşturulan yeni düğüm, listenin başı (head) olur.
+            $this->current = $newNode; // Aynı zamanda, bu düğüm şu anki (current) düğüm olarak da ayarlanır.
         } else {
-            $this->current->next = $newNode;
-            $this->current = $newNode;
+            $this->current->next = $newNode; // Mevcut son düğümün 'next' bağlantısını yeni düğüme ayarlar.
+            $this->current = $newNode; // Yeni eklenen düğümü, şu anki (current) düğüm olarak günceller.
         }
     }
 
