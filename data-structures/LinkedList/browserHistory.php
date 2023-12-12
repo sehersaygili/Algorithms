@@ -57,7 +57,15 @@ class BrowserHistory {
             $current->next = $newNode;
         }
     }
-}
 
+    public function insertAfter($prev, $url) {
+        $newNode = new HistoryNode($url);
+        $current = $this->head;
+       
+        if($current->next === $newNode){
+            $this->head = $prev;
+        }
+    }
+}
 
 ?>
