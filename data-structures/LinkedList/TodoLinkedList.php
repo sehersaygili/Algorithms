@@ -1,66 +1,67 @@
 <?php
 
-class ListNode {
-    public $note;
+//to do not ekleme - çıkarma uygulaması
+
+class todoNode {
+    public $data;
     public $next;
 
-    public function __construct($note) {
-        $this->note = $note;
-        $this->next = null;
+    public function __construct($data, $next=null) {
+        $this->data = $data;
     }
 }
 
-class LinkedList {
-    private $firstNode;
-
-    public function __construct() {
-        $this->firstNode = null;
-    }
-
-    public function insert($note) {
-        $newNode = new ListNode($note);
-        if ($this->firstNode === null) {
-            $this->firstNode = $newNode;
+class todoLinkedList {
+    public $head;
+    //listenin başına not eklemek istiyorum
+    public function addNote($data) {
+        $newNode = new todoNode($data);
+        if($this->head !== null) {
+            $newNode->next = $this->head;
+            $this->head = $newNode;
         } else {
-            $newNode->next = $this->firstNode;
-            $this->firstNode = $newNode;
+            $this->head = $newNode;
         }
     }
 
-    public function display() {
-        $current = $this->firstNode;
-        while ($current !== null) {
-            echo $current->note . PHP_EOL;
-            $current = $current->next;
+    //notlarımı görüntülemek istiyorum
+    public function displayMyNotes() {
+        while($this->head !== null) {
+            echo $this->head->data . PHP_EOL;
+            $this->head = $this->head ->next;
         }
     }
 
-    public function delete($note) {
-        if ($this->firstNode !== null) {
-            if ($this->firstNode->note === $note) {
-                $this->firstNode = $this->firstNode->next;
+    //parametre olarak gönderdiğim notumu silmek istiyorum
+    public function deleteMyNote($data) {
+        if ($this->head === null) {
+            return; // Liste boşsa işlem yapma
+        }
+        if($this->head !== null) { // first node boşsa silinecek bir şey de yok
+            if($this->head->data === $data) {
+                $this->head = $this->head->next;
+                return;
             } else {
-                $current = $this->firstNode;
-                while ($current->next !== null) {
-                    if ($current->next->note === $note) {
-                        $current->next = $current->next->next;
-                        break;
+                while($this->head->next != null) {
+                    if($this->head->next->data === $data) {
+                        $this->head->next = $this->head->next->next;
+                        return;
                     }
-                    $current = $current->next;
+                    $this->head = $this->head->next;
                 }
             }
         }
     }
 }
 
-$list = new LinkedList();
-$list->insert("Alışveriş yap");
-$list->insert("E-postaları kontrol et");
-$list->insert("Proje raporunu yaz");
+$list = new todoLinkedList();
+$list->addNote("Alışveriş yap");
+$list->addNote("E-postaları kontrol et");
+$list->addNote("deneme");
 
-$list->display(); // Listeyi görüntüler
+$list->deleteMyNote("E-postaları kontrol et"); // Bir öğe siler
 
-$list->delete("E-postaları kontrol et"); // Bir öğe siler
+$list->displayMyNotes(); // Güncellenmiş listeyi görüntüler
 
-$list->display(); // Güncellenmiş listeyi görüntüler
+
 ?>
